@@ -40,7 +40,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  cursor: url('https://github.com/Kelsie37/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/flipflop.png?raw=true');
+  cursor: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/mallet.png?raw=true?raw=true'), pointer;
 }
 
 .hole {
