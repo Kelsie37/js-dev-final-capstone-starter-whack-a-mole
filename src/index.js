@@ -10,7 +10,7 @@ let time = 10;
 let timer;
 let lastHole = 0;
 let points = 0;
-let difficulty = "hard";
+let difficulty = "hard"; // could add buttons to html to let user determine difficulty here
 
 /**
  * Generates a random integer within a range.
@@ -235,7 +235,7 @@ function whack(event) {
 */
 function setEventListeners() {
   moles.forEach(mole => {
-    mole.addEventListener('click', whack);
+    mole.addEventListener('click', whack); // works better with mouseover, however; multiple clicking increments score
   });
 
   return moles;
@@ -272,7 +272,6 @@ function stopGame(){
 *
 */
 function startGame(){
-  points = 0;
   clearScore();
   playAudio(song);
   setDuration(10);
