@@ -3,6 +3,8 @@ const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
 const score = document.querySelector('#score'); 
 const timerDisplay = document.querySelector('#timer'); 
+const hitSound = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/hit.mp3?raw=true");
+const song = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/molesong.mp3?raw=true");
 
 let time = 10;
 let timer;
@@ -44,9 +46,7 @@ function setDelay(difficulty) {
   } else if (difficulty === "normal") {
     return 1000;
   } else if (difficulty === "hard") {
-    // Generate a random integer between 600 and 1200
     return randomInteger(600, 1200);
-    // return Math.floor(Math.random() * (1200 - 600 + 1)) + 600;
   } else {
     // Handle invalid difficulty values
     throw new Error("Invalid difficulty");
@@ -169,7 +169,6 @@ function toggleVisibility(hole){
 function updateScore() {
   points++;
   score.textContent = points;
-
   console.log(points);
 
   return points;
@@ -223,8 +222,10 @@ function startTimer() {
 *
 */
 function whack(event) {
-  console.log("whack!")
+  if (!e.isTrusted) return;
+  playAudio(hitSound);
   updateScore();
+  console.log("whack!")
 
   return points;
 }
@@ -234,7 +235,7 @@ function whack(event) {
 * Adds the 'click' event listeners to the moles. See the instructions
 * for an example on how to set event listeners using a for loop.
 */
-function setEventListeners(){
+function setEventListeners() {
   moles.forEach(mole => {
     mole.addEventListener('click', whack);
   });
@@ -260,8 +261,9 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
+  stopAudio(song);  //optional
   clearInterval(timer);
+  clearScore();
   return "game stopped";
 }
 
@@ -272,15 +274,16 @@ function stopGame(){
 *
 */
 function startGame(){
+  points = 0;
+  clearScore();
+  playAudio(song);
   setDuration(10);
+  startTimer();
   showUp();
   return "game started";
 }
 
 startButton.addEventListener("click", startGame);
-
-const audioHit = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/hit.mp3?raw=true");
-const song = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/molesong.mp3?raw=true");
 
 function playAudio(audioObject) {
   audioObject.play();

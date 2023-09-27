@@ -40,7 +40,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  cursor: url('https://github.com/Kelsie37/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/flipflop1.png?raw=true'), pointer;
+  cursor: url('https://github.com/Kelsie37/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/flipflop.png?raw=true'), pointer;
 }
 
 .hole {
@@ -71,8 +71,8 @@ h2 {
   top: 100%;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s;
-  transition: all 1s;
+  transition: transform 2s;
+  transition: all 2s;
   pointer-events:auto;
 }
 
