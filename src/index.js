@@ -118,7 +118,6 @@ function gameOver() {
 *
 */
 function showUp() {
-  const difficulty = "hard";
   let delay = setDelay(difficulty); 
   const hole = chooseHole(holes);  
 
@@ -222,7 +221,6 @@ function startTimer() {
 *
 */
 function whack(event) {
-  if (!e.isTrusted) return;
   playAudio(hitSound);
   updateScore();
   console.log("whack!")
@@ -261,7 +259,7 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  stopAudio(song);  //optional
+  stopAudio(song);  
   clearInterval(timer);
   clearScore();
   return "game stopped";
@@ -278,6 +276,7 @@ function startGame(){
   clearScore();
   playAudio(song);
   setDuration(10);
+  setEventListeners();
   startTimer();
   showUp();
   return "game started";
